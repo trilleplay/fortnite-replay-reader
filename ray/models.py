@@ -108,7 +108,7 @@ class Elimination:
 
     def __repr__(self):
         elim_type = 'knocked' if self.knocked else 'eliminated'
-        return f'{self.eliminated} got {elim_type} by {self.eliminator} with {self.gun_type}'
+        return f'{{ "eliminated": "{self.eliminated}", "type": "{elim_type}", "by": "{self.eliminator}" }}'
 
 
 @dataclass
