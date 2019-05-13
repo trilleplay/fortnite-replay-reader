@@ -108,7 +108,13 @@ class Elimination:
 
     def __repr__(self):
         elim_type = 'knocked' if self.knocked else 'eliminated'
-        return f'{{ "eliminated": "{self.eliminated}", "type": "{elim_type}", "by": "{self.eliminator}" }}'
+        filterplayername = str(self.eliminated)
+        for c in ["\""]:
+            validplayernametarget = filterplayername.replace(c, f"\\{c}")
+        filterplayername = str(self.eliminator)
+        for c in ["\""]:
+            validplayernameby = filterplayername.replace(c, f"\\{c}")
+        return f'{{ "eliminated": "{validplayernametarget}", "type": "{elim_type}", "by": "{validplayernameby}" }}'
 
 
 @dataclass
